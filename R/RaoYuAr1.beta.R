@@ -17,7 +17,7 @@
 #' @import stats
 #' @import grDevices
 #' @import graphics
-#' @import dplyr
+#' @importFrom dplyr setdiff
 #' @return This function returns a list of the following objects:
 #'    \item{Est}{A vector with the values of Small Area mean Estimates using Hierarchical bayesian method}
 #'    \item{refVar}{Estimated random effect variances}
@@ -221,7 +221,7 @@ RaoYuAr1.beta<-function( formula, area, period,  iter.update=3, iter.mcmc=2000,
     NS = m-NTS
     x_auxTS <- x_aux[rowNA,,]
     dim(x_auxTS) = c(NTS,t,aux)
-    x_auxS <- setdiff(x_aux,x_auxTS)
+    x_auxS<-setdiff(x_aux,x_auxTS)
     dim(x_auxS) = c(NS,t,aux)
 
     if (any(Y<=0) || any(Y>=1)){

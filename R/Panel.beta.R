@@ -7,7 +7,7 @@
 #' @param iter.mcmc Number of total iterations per chain with default \code{2000}
 #' @param thin Thinning rate, must be a positive integer with default \code{1}
 #' @param burn.in Number of iterations to discard at the beginning with default \code{1000}
-#' @param tau.eVariance of area-by-time effect of variable interest with default \code{1}
+#' @param tau.e Variance of area-by-time effect of variable interest with default \code{1}
 #' @param tau.v Variance of random area effect of variable interest with default \code{1}
 #' @param data The data frame
 #' @export Panel.beta
@@ -17,7 +17,7 @@
 #' @import stats
 #' @import grDevices
 #' @import graphics
-#' @import dplyr
+#' @importFrom dplyr setdiff
 #' @return This function returns a list of the following objects:
 #'    \item{Est}{A vector with the values of Small Area mean Estimates using Hierarchical bayesian method}
 #'    \item{refVar}{Estimated random effect variances}
@@ -207,7 +207,7 @@ Panel.beta <-function( formula, area, period, iter.update=3, iter.mcmc=2000,
     }
     x_aux = c()
     for (r in 1:aux) {
-    x_aux =  c(x_aux,x[[r]])
+      x_aux =  c(x_aux,x[[r]])
     }
     dim(x_aux) = c(m,t,aux)
     NTS = length(rowNA)
@@ -216,6 +216,7 @@ Panel.beta <-function( formula, area, period, iter.update=3, iter.mcmc=2000,
     dim(x_auxTS) = c(NTS,t,aux)
     x_auxS<-setdiff(x_aux,x_auxTS)
     dim(x_auxS) = c(NS,t,aux)
+
 
     mu.b = rep(0, nvar)
     tau.b = rep(1, nvar)
