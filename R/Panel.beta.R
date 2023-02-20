@@ -111,7 +111,7 @@ Panel.beta <-function( formula, area, period, iter.update=3, iter.mcmc=2000,
       inits <- list(eps = matrix(0,m,t), b = mu.b, tau.v=1, tau.e = 1)
       cat("model {
         for (i in 1:m) {
-				    v[i]~dnorm(0,tau.v)#(hapus gak yaa:)
+				    v[i]~dnorm(0,tau.v)
 				    for (j in 1:t){
 				      y[i,j]~dbeta(A[i,j],B[i,j])
 				      A[i,j] <- mu[i,j] * phi[i,j]

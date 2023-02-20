@@ -14,9 +14,10 @@ BugReports: https://github.com/DianRahmawatiSalis/saeHB.panel.beta/issues
 Depends: R(>= 2.10)
 Suggests: 
     knitr,
+    R.rsp,
     rmarkdown,
     testthat (>= 3.0.0)
-VignetteBuilder: knitr
+VignetteBuilder: R.rsp, knitr
 Imports: 
     stringr,
     coda,
