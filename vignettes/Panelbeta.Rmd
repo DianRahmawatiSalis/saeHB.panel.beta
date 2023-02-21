@@ -22,7 +22,7 @@ data("dataPanelbeta")
 
 ## Fitting Model
 ```{r}
-dataPanelbeta = dataPanelbeta[1:15,]
+dataPanelbeta = dataPanelbeta[1:25,]
 area = max(dataPanelbeta[,2])
 period = max(dataPanelbeta[,3])
 result=Panel.beta(ydi~xdi1+xdi2,area=area, period=period ,iter.mcmc = 10000,thin=5,burn.in = 1000,data=dataPanelbeta)

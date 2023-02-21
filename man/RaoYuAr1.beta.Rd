@@ -52,6 +52,7 @@ This function is implemented to variable of interest \code{ydi}
 \examples{
 ##For data without any non-sampled area
 data(dataBetaAr1)     # Load dataset
+dataBetaAr1 = dataBetaAr1[1:25,]
 formula = ydi ~ xdi1 + xdi2
 area = max(dataBetaAr1[, "area"])
 period = max(dataBetaAr1[,"period"])
