@@ -1,6 +1,5 @@
-## code to prepare `DATASET` goes here
-library(devtools)
-library(dplyr)
+## code to prepare `dataset` dataset goes here
+
 set.seed(123)
 m=20
 t=5
@@ -63,9 +62,6 @@ for (i in 1:m) {
 }
 
 dataBetaAr1 <- data.frame(ydi,area,period,vardir,xdi1,xdi2)
-# idx = sample(1:m, 4, replace = F)
-# dataBetaAr1Ns = dataBetaAr1
-# dataBetaAr1Ns = dataBetaAr1Ns%>%filter(area%in%idx)
 dataBetaAr1Ns = dataBetaAr1
 dataBetaAr1Ns[dataBetaAr1Ns$area==5, c(1,4)]=NA
 dataBetaAr1Ns[dataBetaAr1Ns$area==11, c(1,4)]=NA
