@@ -2,7 +2,7 @@
 % Please edit documentation in R/Panel.beta.R
 \name{Panel.beta}
 \alias{Panel.beta}
-\title{Small Area Estimation using Hierarchical Bayesian under Rao-Yu Model under Beta Distribution with \code{rho=0}}
+\title{Small Area Estimation using Hierarchical Bayesian for Rao-Yu Model under Beta Distribution with \code{rho=0}}
 \usage{
 Panel.beta(
   formula,

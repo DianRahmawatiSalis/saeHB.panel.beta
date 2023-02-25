@@ -1,4 +1,4 @@
-#' @title Small Area Estimation using Hierarchical Bayesian under Rao-Yu Model under Beta Distribution with \code{rho=0}
+#' @title Small Area Estimation using Hierarchical Bayesian for Rao-Yu Model under Beta Distribution with \code{rho=0}
 #' @description This function is implemented to variable of interest \code{ydi}
 #' @param formula Formula that describe the fitted model
 #' @param area Number of areas (domain) of the data
