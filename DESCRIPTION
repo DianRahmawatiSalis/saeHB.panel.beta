@@ -3,10 +3,10 @@ Type: Package
 Title: Small Area Estimation using HB for Rao Yu Model under Beta Distribution
 Version: 0.1.0
 Authors@R: c(person("Dian Rahmawati", "Salis", role = c("aut", "cre"),
-                      email = "221911153@stis.ac.id"),
+                      email = "dianrahmawatisalis03@gmail.com"),
                       person("Azka", "Ubaidillah", role = "aut") )
 Maintainer: Dian Rahmawati Salis <221911153@stis.ac.id>
-Description: Several functions are provided for small area estimation at the area level using the hierarchical bayesian (HB) method with panel data under beta distribution for variable interest. This package also provides a dataset produced by data generation. The "rjags" package is employed to obtain parameter estimates. Model-based estimators involve the HB estimators, which include the mean and the variation of the mean. For the reference, see Rao and Molina (2015, ISBN: 978-1-118-73578-7).
+Description: Several functions are provided for small area estimation at the area level using the hierarchical bayesian (HB) method with panel data under beta distribution for variable interest. This package also provides a dataset produced by data generation. The 'rjags' package is employed to obtain parameter estimates. Model-based estimators involve the HB estimators, which include the mean and the variation of the mean. For the reference, see Rao and Molina (2015, ISBN: 978-1-118-73578-7).
 License: GPL-3
 Encoding: UTF-8
 LazyData: true
