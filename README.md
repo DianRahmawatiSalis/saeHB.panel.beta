@@ -3,17 +3,33 @@
 
 # saeHB.panel.beta
 
-<!-- badges: start -->
+Several functions are provided for small area estimation at the area
+level using the hierarchical bayesian (HB) method with panel data under
+beta distribution for variable interest. This package also provides a
+dataset produced by data generation. The ‘rjags’ package is employed to
+obtain parameter estimates. Model-based estimators involve the HB
+estimators, which include the mean and the variation of the mean. For
+the reference, see Rao and Molina (2015, <ISBN:978-1-118-73578-7>).
 
-[![R-CMD-check](https://github.com/DianRahmawatiSalis/saeHB.panel.beta/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/DianRahmawatiSalis/saeHB.panel.beta/actions/workflows/R-CMD-check.yaml)
-<!-- badges: end -->
+## Author
 
-The goal of saeHB.panel.beta is to …
+Dian Rahmawati Salis, Azka Ubaidillah
+
+## Maintaner
+
+Dian Rahmawati Salis <dianrahmawatisalis03@gmail.com>
+
+## Function
+
+- `RaoYuAr1.beta()` This function gives estimation of y using
+  Hierarchical Bayesian Rao Yu Model under Beta distribution
+- `Panel.beya()` This function gives estimation of y using Hierarchical
+  Bayesian Rao Yu Model under Beta distribution when rho = 0
 
 ## Installation
 
-You can install the development version of saeHB.panel.beta from
-[GitHub](https://github.com/) with:
+You can install the development version of saeHB.panel.beta from GitHub
+with:
 
 ``` r
 # install.packages("devtools")
@@ -26,32 +42,51 @@ This is a basic example which shows you how to solve a common problem:
 
 ``` r
 library(saeHB.panel.beta)
-## basic example code
+data("dataPanelbeta")
+dataPanelbeta <- dataPanelbeta[1:25,] #for the example only use part of the dataset
+formula <- ydi~xdi1+xdi2 
+area <- max(dataPanelbeta[,2])
+period <- max(dataPanelbeta[,3])
+result<-Panel.beta(formula,area=area, period=period ,iter.mcmc = 10000,thin=5,burn.in = 1000,data=dataPanelbeta)
 ```
 
-What is special about using `README.Rmd` instead of just `README.md`?
-You can include R chunks like so:
+Extract area mean estimation
 
 ``` r
-summary(cars)
-#>      speed           dist       
-#>  Min.   : 4.0   Min.   :  2.00  
-#>  1st Qu.:12.0   1st Qu.: 26.00  
-#>  Median :15.0   Median : 36.00  
-#>  Mean   :15.4   Mean   : 42.98  
-#>  3rd Qu.:19.0   3rd Qu.: 56.00  
-#>  Max.   :25.0   Max.   :120.00
+result$Est
 ```
 
-You’ll still need to render `README.Rmd` regularly, to keep `README.md`
-up-to-date. `devtools::build_readme()` is handy for this. You could also
-use GitHub Actions to re-render `README.Rmd` every time you push. An
-example workflow can be found here:
-<https://github.com/r-lib/actions/tree/v1/examples>.
+Extract coefficient estimation
 
-You can also embed plots, for example:
+``` r
+result$coefficient
+```
 
-<img src="man/figures/README-pressure-1.png" width="100%" />
+Extract area random effect variance
 
-In that case, don’t forget to commit and push the resulting figure
-files, so they display on GitHub and CRAN.
+``` r
+result$refVar
+```
+
+Extract MSE
+
+``` r
+MSE_HB<-result$Est$SD^2
+summary(MSE_HB)
+```
+
+Extract RSE
+
+``` r
+RSE_HB<-sqrt(MSE_HB)/result$Est$MEAN*100
+summary(RSE_HB)
+```
+
+## References
+
+- Rao, J.N.K & Molina. (2015). Small Area Estimation 2nd Edition. New
+  York: John Wiley and Sons, Inc.
+- Torabi, M., & Shokoohi, F. (2012). Likelihood inference in small area
+  estimation by combining time-series and cross-sectional data. Journal
+  of Multivariate Analysis, 111, 213–221.
+  <https://doi.org/10.1016/j.jmva.2012.05.016>
