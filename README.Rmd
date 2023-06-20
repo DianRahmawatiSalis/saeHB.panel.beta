@@ -31,7 +31,7 @@ Dian Rahmawati Salis <dianrahmawatisalis03@gmail.com>
 
 ## Function
 * `RaoYuAr1.beta()` This function gives estimation of y using Hierarchical Bayesian Rao Yu Model under Beta distribution
-* `Panel.beya()` This function gives estimation of y using Hierarchical Bayesian Rao Yu Model under Beta distribution when rho = 0
+* `Panel.beta()` This function gives estimation of y using Hierarchical Bayesian Rao Yu Model under Beta distribution when rho = 0
 
 ## Installation
 You can install the development version of saeHB.panel.beta from GitHub with:

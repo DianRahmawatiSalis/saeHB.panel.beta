@@ -23,7 +23,7 @@ Dian Rahmawati Salis <dianrahmawatisalis03@gmail.com>
 
 - `RaoYuAr1.beta()` This function gives estimation of y using
   Hierarchical Bayesian Rao Yu Model under Beta distribution
-- `Panel.beya()` This function gives estimation of y using Hierarchical
+- `Panel.beta()` This function gives estimation of y using Hierarchical
   Bayesian Rao Yu Model under Beta distribution when rho = 0
 
 ## Installation
