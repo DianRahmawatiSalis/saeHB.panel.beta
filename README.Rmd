@@ -35,7 +35,7 @@ Dian Rahmawati Salis <dianrahmawatisalis03@gmail.com>
 
 ## Installation
 You can install the development version of saeHB.panel.beta from GitHub with:
-``` r
+``` {r}
 # install.packages("devtools")
 devtools::install_github("DianRahmawatiSalis/saeHB.panel.beta")
 ```
@@ -44,7 +44,7 @@ devtools::install_github("DianRahmawatiSalis/saeHB.panel.beta")
 
 This is a basic example which shows you how to solve a common problem:
 
-```r
+```{r}
 library(saeHB.panel.beta)
 data("dataPanelbeta")
 dataPanelbeta <- dataPanelbeta[1:25,] #for the example only use part of the dataset
@@ -55,31 +55,37 @@ result<-Panel.beta(formula,area=area, period=period ,iter.mcmc = 10000,thin=5,bu
 ```
 
 Extract area mean estimation
-```r
+```{r}
 result$Est
 ```
 
 Extract coefficient estimation
-```r
+```{r}
 result$coefficient
 ```
 
 Extract area random effect variance
-```r
+```{r}
 result$refVar
 ```
 
 Extract MSE
-```r
+```{r}
 MSE_HB<-result$Est$SD^2
 summary(MSE_HB)
 ```
 
 Extract RSE
-```r
+```{r}
 RSE_HB<-sqrt(MSE_HB)/result$Est$MEAN*100
 summary(RSE_HB)
 ```
+
+Extract convergence diagnostic using geweke test
+```{r}
+result$covergence.test
+```
+
 
 ## References
 

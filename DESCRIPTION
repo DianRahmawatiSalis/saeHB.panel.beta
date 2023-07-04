@@ -2,7 +2,7 @@ Type: Package
 Package: saeHB.panel.beta
 Title: Small Area Estimation using HB for Rao Yu Model under Beta
     Distribution
-Version: 0.1.2
+Version: 0.1.3
 Authors@R: c(
     person("Dian Rahmawati", "Salis", , "dianrahmawatisalis03@gmail.com", role = c("aut", "cre")),
     person("Azka", "Ubaidillah", role = "aut")
