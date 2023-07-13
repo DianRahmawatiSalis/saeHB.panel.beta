@@ -83,7 +83,7 @@ summary(RSE_HB)
 
 Extract convergence diagnostic using geweke test
 ```{r}
-result$covergence.test
+result$convergence.test
 ```
 
 

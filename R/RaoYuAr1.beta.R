@@ -397,7 +397,7 @@ RaoYuAr1.beta<-function( formula, area, period,  iter.update=3, iter.mcmc=2000,
   result$plot <- list(graphics.off(), par(mar = c(2, 2, 2, 2)),
                      autocorr.plot(result_mcmc, col = "brown2", lwd = 2),
                      plot(result_mcmc, col = "brown2", lwd = 2))
-  result$convergence.test = zscore
+  result$convergence.test <- zscore
   return(result)
 }
 
