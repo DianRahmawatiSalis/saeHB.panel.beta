@@ -45,7 +45,7 @@
 #' ## For data with non-sampled area use dataBetaAr1Ns
 #'
 RaoYuAr1.beta<-function( formula, area, period,  iter.update=3, iter.mcmc=2000,
-                    thin = 1, burn.in =1000, tau.e = 1, tau.v=1, data){
+                         thin = 1, burn.in =1000, tau.e = 1, tau.v=1, data){
 
   result <- list(Est = NA, refVar = NA, coefficient = NA, plot = NA, convergence.test= NA)
   formuladata <- model.frame(formula, data, na.action = NULL)
@@ -176,11 +176,13 @@ RaoYuAr1.beta<-function( formula, area, period,  iter.update=3, iter.mcmc=2000,
 
     convergence = geweke.diag(samps)
     convergence =matrix(unlist(convergence),  nrow = 1)
-    convergence.param= convergence[,(2:(nvar+1))]
-    zscore = as.matrix(convergence.param,nrow = 1)
-    rownames(zscore) = b.varnames
+    convergence.paramb= convergence[,(2:(nvar+1))]
+    convergence.paramrho= convergence[,(m*t+nvar+4)]
+    convergence.paramrho = as.matrix(convergence.paramrho,nrow = 1)
+    convergence.paramb = as.matrix(convergence.paramb,nrow = 1)
+    zscore = rbind(convergence.paramb,convergence.paramrho)
+    rownames(zscore) = c(b.varnames, "rho")
     colnames(zscore) = c("Z-score")
-    zscore= t(zscore)
 
     result_mcmc <- samps1[,c(2:(nvar+1))]
     colnames(result_mcmc[[1]]) <- b.varnames
@@ -343,11 +345,13 @@ RaoYuAr1.beta<-function( formula, area, period,  iter.update=3, iter.mcmc=2000,
 
     convergence = geweke.diag(samps)
     convergence =matrix(unlist(convergence),  nrow = 1)
-    convergence.param= convergence[,(2:(nvar+1))]
-    zscore = as.matrix(convergence.param,nrow = 1)
-    rownames(zscore) = b.varnames
+    convergence.paramb= convergence[,(2:(nvar+1))]
+    convergence.paramrho= convergence[,(m*t+nvar+4)]
+    convergence.paramrho = as.matrix(convergence.paramrho,nrow = 1)
+    convergence.paramb = as.matrix(convergence.paramb,nrow = 1)
+    zscore = rbind(convergence.paramb,convergence.paramrho)
+    rownames(zscore) = c(b.varnames, "rho")
     colnames(zscore) = c("Z-score")
-    zscore= t(zscore)
 
     result_mcmc <- samps1[,c(2:(nvar+1))]
     colnames(result_mcmc[[1]]) <- b.varnames
@@ -395,8 +399,8 @@ RaoYuAr1.beta<-function( formula, area, period,  iter.update=3, iter.mcmc=2000,
   result$refVar <- a.var
   result$coefficient <- coef
   result$plot <- list(graphics.off(), par(mar = c(2, 2, 2, 2)),
-                     autocorr.plot(result_mcmc, col = "brown2", lwd = 2),
-                     plot(result_mcmc, col = "brown2", lwd = 2))
+                      autocorr.plot(result_mcmc, col = "brown2", lwd = 2),
+                      plot(result_mcmc, col = "brown2", lwd = 2))
   result$convergence.test <- zscore
   return(result)
 }
